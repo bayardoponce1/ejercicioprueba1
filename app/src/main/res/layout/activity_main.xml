@@ -6,15 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+    <EditText
+        android:id="@+id/nombres"
+        android:layout_width="380dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/nombres"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="12dp" />
+
+    <EditText
+        android:id="@+id/apellidos"
+        android:layout_width="380dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="@string/apellidos"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/nombres"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/btnprocesar"
+        android:layout_width="275dp"
+        android:layout_height="52dp"
+        android:text="@string/btn_procesar"
+        app:layout_constraintTop_toBottomOf="@+id/telefono"
+        tools:layout_editor_absoluteX="67dp" />
+
+    <EditText
+        android:id="@+id/telefono"
+        android:layout_width="380dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:hint="@string/telefono"
+        android:inputType="phone"
+        app:layout_constraintTop_toBottomOf="@+id/apellidos"
+        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
