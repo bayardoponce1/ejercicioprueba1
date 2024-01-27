@@ -30,5 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
+    private void AddPerson()
+    {
+        SQLiteConexion conexion = SQLiteConexion( this, Transacciones.DBName, null, 1);
+        SQLiteDatabase db = conexion.getReadableDatabase();
+
+        ContentValues valores = new ContentValues();
+        valores.put(Transacciones.nombres, nombres.getText().toString());
+    }
+
 }
+
