@@ -8,9 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import Configuracion.Transacciones;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText nombres, apellidos, telefono;
+    EditText nombres, apellidos, edad, correo;
     Button btnproceso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         nombres= (EditText) findViewById(R.id.nombres);
         apellidos= (EditText) findViewById(R.id.apellidos);
-        telefono= (EditText) findViewById(R.id.telefono);
+        edad= (EditText) findViewById(R.id.edad);
+        correo= (EditText) findViewById(R.id.correo);
         btnproceso= (Button) findViewById(R.id.btnprocesar);
 
         btnproceso.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
         ContentValues valores = new ContentValues();
         valores.put(Transacciones.nombres, nombres.getText().toString());
+        valores.put(Transacciones.apellidos, apellidos.getText().toString());
+        valores.put(Transacciones.edad, edad.getText().toString());
+        valores.put(Transacciones.correo, correo.getText().toString());
+
+        Long resultado = db.insert(Transacciones.TablePersonas, Transacciones.id, valores);
+
+        Toast.makeText(getApplicationContext(), "Registro ingresado con exito" + resultado.toString(),
+                Toast.LENGTH_LONG).show();
+        db.close();
+
     }
 
 }
