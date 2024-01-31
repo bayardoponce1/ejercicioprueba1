@@ -2,14 +2,16 @@ package com.example.ejericioprueba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import Configuracion.SQLiteConexion;
 import Configuracion.Transacciones;
-
 public class MainActivity extends AppCompatActivity {
 
     EditText nombres, apellidos, edad, correo;
@@ -28,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
         btnproceso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), nombres.getText().toString(), Toast.LENGTH_LONG).show();
-
+                AddPerson();
 
             }
         });
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void AddPerson()
     {
-        SQLiteConexion conexion = SQLiteConexion( this, Transacciones.DBName, null, 1);
-        SQLiteDatabase db = conexion.getReadableDatabase();
+        SQLiteConexion conexion = new SQLiteConexion( this, Transacciones.DBName, null, 1);
+        SQLiteDatabase db = conexion.getWritableDatabase();
 
         ContentValues valores = new ContentValues();
         valores.put(Transacciones.nombres, nombres.getText().toString());
